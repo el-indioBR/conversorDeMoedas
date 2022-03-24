@@ -1,0 +1,62 @@
+body {
+    font-family: "Roboto Mono", monospace;
+    background-image: url("https://www.10wallpaper.com/wallpaper/1366x768/1608/Coins_bills_money-2016_Macro_Photo_Wallpaper_1366x768.jpg");
+    background-size: 100%;
+  }
+  
+  .container {
+    text-align: center;
+    padding: 20px;
+    height: 100vh;
+  }
+  
+  .page-title {
+    color: #ffffff;
+    margin: 0 0 20px;
+    font-size: 60px;
+  }
+  
+  input {
+    margin: 12px;
+    padding: 6px;
+    border-radius: 5px;
+  }
+  
+  label {
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  button {
+    margin-top: 12px;
+    padding: 4px 8px;
+    border-radius: 10px;
+    background: #ffffff;
+    cursor: pointer;
+    font-size: 17px;
+    
+  }
+  
+  h2 {
+    color: #ffffff;
+    font-size: 30px;
+  }
+
+  .conversao{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+  }
+
+  .select {
+    padding: 4px 8px;
+    border-radius: 5px;
+    font-size: 19px;
+  }
+
+  .seta {
+    max-width: 40px;
+    margin: 0 10px;
+  }

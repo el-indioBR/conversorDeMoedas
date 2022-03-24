@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Conversor de moedas</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1 class="page-title"> Conversor de moedas </h1>
+        <div class="conversao">
+            <select class="select" id="in" onChange="update()">
+                <option value="1" selected>Dolar</option>
+                <option value="2">Real</option>
+                <option value="3">Euro</option>
+            </select>
+
+            <img src="./seta.png" alt="" class="seta">
+
+            <select class="select" id="out" onChange="">
+                <option value="1">Dolar</option>
+                <option value="2" selected>Real</option>
+                <option value="3">Euro</option>
+            </select>
+        </div>
+        <label id="moeda" for="moeda"></label><br>
+        <input type="number" id="valor" size="2" /><br>
+        <button type="submit" onclick="converter()">Converter</button>
+        <h2 id="valorConvertido"></h2>
+
+    </div>
+
+    <script type="text/javascript">
+
+        var dolar = 0;
+        var real = 0;
+        var euro = 0;
+
+        var moedaEntrada = document.getElementById("in");
+        var moedaSaida = document.getElementById("out");
+
+        function update() {
+            var valorEntrada = moedaEntrada.options[moedaEntrada.selectedIndex];
+            var opcoes = document.getElementById("moeda")
+            if (valorEntrada.text == 'Dolar')
+                opcoes.innerHTML = `Insira o valor em ${valorEntrada.text} U$`
+            else if (valorEntrada.text == 'Real')
+                opcoes.innerHTML = `Insira o valor em ${valorEntrada.text} R$`
+            else opcoes.innerHTML = `Insira o valor em ${valorEntrada.text} €`
+        }
+
+        update();
+
+        function calcular() {
+            var valorEntrada = moedaEntrada.options[moedaEntrada.selectedIndex].text;
+            var valorSaida = moedaSaida.options[moedaSaida.selectedIndex].text;
+
+            var valor = document.getElementById("valor").value;
+
+            if (valorEntrada == 'Dolar' && valorSaida == 'Real') {
+                real = valor * 4.83;
+                return real;
+            } else if (valorEntrada == 'Dolar' && valorSaida == 'Euro') {
+                euro = valor * 0.91;
+                return euro;
+            } else if (valorEntrada == 'Real' && valorSaida == 'Dolar') {
+                dolar = valor * 0.21;
+                return dolar;
+            } else if (valorEntrada == 'Real' && valorSaida == 'Euro') {
+                euro = valor * 0.19;
+                return euro;
+            } else if (valorEntrada == 'Euro' && valorSaida == 'Dolar') {
+                dolar = valor * 1.10;
+                return dolar;
+            } else if (valorEntrada == 'Euro' && valorSaida == 'Real') {
+                real = valor * 5.31;
+                return real;
+            }
+        }
+
+        function converter() {
+            var resultado = document.getElementById("valorConvertido");
+            var valorSaida = moedaSaida.options[moedaSaida.selectedIndex].text;
+
+            resultado.innerHTML = `O valor em ${valorSaida} é ${calcular()}`;
+        }
+
+    </script>
+
+</body>
+
+</html>
