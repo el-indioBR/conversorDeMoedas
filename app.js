@@ -29,26 +29,26 @@ function calcular() {
   let valorEntrada = moedaEntrada.options[moedaEntrada.selectedIndex].text
   let valorSaida = moedaSaida.options[moedaSaida.selectedIndex].text
 
-  var valor = document.getElementById('valor').value
+  var valor = parseFloat(document.getElementById('valor').value)
 
   if (valorEntrada == 'Dolar' && valorSaida == 'Real') {
     real = valor * 4.83
-    return real
+    return real.toFixed(2)
   } else if (valorEntrada == 'Dolar' && valorSaida == 'Euro') {
     euro = valor * 0.91
-    return euro
+    return euro.toFixed(2)
   } else if (valorEntrada == 'Real' && valorSaida == 'Dolar') {
     dolar = valor * 0.21
-    return dolar
+    return dolar.toFixed(2)
   } else if (valorEntrada == 'Real' && valorSaida == 'Euro') {
     euro = valor * 0.19
-    return euro
+    return euro.toFixed(2)
   } else if (valorEntrada == 'Euro' && valorSaida == 'Dolar') {
     dolar = valor * 1.1
-    return dolar
+    return dolar.toFixed(2)
   } else if (valorEntrada == 'Euro' && valorSaida == 'Real') {
     real = valor * 5.31
-    return real
+    return real.toFixed(2)
   }
 }
 
