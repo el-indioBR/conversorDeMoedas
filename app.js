@@ -12,10 +12,10 @@ function update() {
   let resultado = document.getElementById('valorConvertido')
 
   resultado.innerHTML = ''
+  valor.value = ''
 
   if (valorEntrada.value == valorSaida.value)
-    opcoes.innerHTML =
-      'A moeda de entrada deve ser diferente da moeda de saída!'
+    opcoes.innerHTML = 'A moeda de entrada deve ser diferente da moeda de saída!'
   else if (valorEntrada.text == 'Dolar')
     opcoes.innerHTML = `Insira o valor em ${valorEntrada.text} U$`
   else if (valorEntrada.text == 'Real')
@@ -60,11 +60,11 @@ function converter() {
   if (calcular() == 0) return alert('O valor não pode ficar vazio!')
   if (valorEntrada.value == valorSaida.value)
     return alert('A moeda de entrada deve ser diferente da moeda de saída!')
-  
+
   if (valorSaida.value == 1)
-  return resultado.innerHTML = `O valor em ${valorSaida.text} é $${calcular()}`
+    return resultado.innerHTML = `O valor em ${valorSaida.text} é $${calcular()}`
   if (valorSaida.value == 2)
-  return resultado.innerHTML = `O valor em ${valorSaida.text} é R$${calcular()}`
+    return resultado.innerHTML = `O valor em ${valorSaida.text} é R$${calcular()}`
   if (valorSaida.value == 3)
-  return resultado.innerHTML = `O valor em ${valorSaida.text} é €${calcular()}`
+    return resultado.innerHTML = `O valor em ${valorSaida.text} é €${calcular()}`
 }
