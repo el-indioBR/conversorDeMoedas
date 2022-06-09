@@ -60,6 +60,11 @@ function converter() {
   if (calcular() == 0) return alert('O valor não pode ficar vazio!')
   if (valorEntrada.value == valorSaida.value)
     return alert('A moeda de entrada deve ser diferente da moeda de saída!')
-
-  resultado.innerHTML = `O valor em ${valorSaida.text} é ${calcular()}`
+  
+  if (valorSaida.value == 1)
+  return resultado.innerHTML = `O valor em ${valorSaida.text} é $${calcular()}`
+  if (valorSaida.value == 2)
+  return resultado.innerHTML = `O valor em ${valorSaida.text} é R$${calcular()}`
+  if (valorSaida.value == 3)
+  return resultado.innerHTML = `O valor em ${valorSaida.text} é €${calcular()}`
 }
