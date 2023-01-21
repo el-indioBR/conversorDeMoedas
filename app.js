@@ -1,6 +1,12 @@
 var dolar = 0
 var real = 0
 var euro = 0
+var dolarReal = 0;
+var dolarEuro = 0;
+var euroReal = 0;
+var euroDolar = 0;
+var realDolar = 0;
+var realEuro = 0;
 
 var moedaEntrada = document.getElementById('in')
 var moedaSaida = document.getElementById('out')
@@ -24,30 +30,32 @@ function update() {
 }
 
 update()
+api()
 
 function calcular() {
   let valorEntrada = moedaEntrada.options[moedaEntrada.selectedIndex].text
   let valorSaida = moedaSaida.options[moedaSaida.selectedIndex].text
 
+
   var valor = parseFloat(document.getElementById('valor').value)
 
   if (valorEntrada == 'Dolar' && valorSaida == 'Real') {
-    real = valor * 4.83
+    real = valor * dolarReal
     return real.toFixed(2)
   } else if (valorEntrada == 'Dolar' && valorSaida == 'Euro') {
-    euro = valor * 0.91
+    euro = valor * dolarEuro
     return euro.toFixed(2)
   } else if (valorEntrada == 'Real' && valorSaida == 'Dolar') {
-    dolar = valor * 0.21
+    dolar = valor * realDolar
     return dolar.toFixed(2)
   } else if (valorEntrada == 'Real' && valorSaida == 'Euro') {
-    euro = valor * 0.19
+    euro = valor * realEuro
     return euro.toFixed(2)
   } else if (valorEntrada == 'Euro' && valorSaida == 'Dolar') {
-    dolar = valor * 1.1
+    dolar = valor * euroDolar
     return dolar.toFixed(2)
   } else if (valorEntrada == 'Euro' && valorSaida == 'Real') {
-    real = valor * 5.31
+    real = valor * euroReal
     return real.toFixed(2)
   }
 }
@@ -67,4 +75,26 @@ function converter() {
     return resultado.innerHTML = `O valor em ${valorSaida.text} é R$${calcular()}`
   if (valorSaida.value == 3)
     return resultado.innerHTML = `O valor em ${valorSaida.text} é €${calcular()}`
+}
+
+function api() {
+  fetch(`https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BRL-USD,USD-EUR,EUR-USD,BRL-EUR`).then(resposta=>{
+    return resposta.json()
+  }).then(corpo=>{
+   dolarReal = parseFloat(corpo.USDBRL.bid)
+   dolarEuro = parseFloat(corpo.USDEUR.bid)
+   euroReal = parseFloat(corpo.EURBRL.bid)
+   euroDolar = parseFloat(corpo.EURUSD.bid)
+   realDolar = parseFloat(corpo.BRLUSD.bid)
+   realEuro = parseFloat(corpo.BRLEUR.bid)
+
+//  dolarReal = 1
+//  dolarEuro = 1
+//  euroReal = 1
+//  euroDolar = 1
+//  realDolar = 1 
+//  realEuro =
+   
+  })
+
 }
